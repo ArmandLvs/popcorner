@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create database",
+            "type": "shell",
+            "command": "symfony console doctrine:database:create"
+        },
+        {
+            "label": "Drop database",
+            "type": "shell",
+            "command": "symfony console doctrine:database:drop --force"
+        },
+        {
+            "label": "Create schema",
+            "type": "shell",
+            "command": "symfony console doctrine:schema:create"
+        },
+        {
+            "label": "Load fixtures",
+            "type": "shell",
+            "command": "symfony console doctrine:fixtures:load",
+        }
+    ]
+}
