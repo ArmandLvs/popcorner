@@ -6,22 +6,22 @@
 - [ ] Créations d'entités
     - [x] Entité objet "Movie"
     - [x] Entité inventaire "Library"
-    - [ ] Entité utilisateur "Member"
+    - [x] Entité utilisateur "Member"
     - [ ] Entité gallerie "Collection"
 - [ ] Création des associations entre entités
     - [x] Association 1-N entre "Library" et "Movie"
-    - [ ] Association 1-1 entre "Member" et "Library"
+    - [x] Association 1-1 entre "Member" et "Library"
     - [ ] Assoication 1-N entre "Member" et "Collection"
     - [ ] Association N-N entre "Collection" et "Movie"
 - [ ] Ajout de données tests
-    - [ ] Ajout de données tests pour "Movie"
-    - [ ] Ajout de données tests pour "Library"
-    - [ ] Ajout de données tests pour "Member"
+    - [x] Ajout de données tests pour "Movie"
+    - [x] Ajout de données tests pour "Library"
+    - [x] Ajout de données tests pour "Member"
     - [ ] Ajout de données tests pour "Collection"
 - [ ] Interface administration
     - [x] Ajout de EasyAdmin
-    - [ ] Controller CRUD pour "Movie"
-    - [ ] Controller CRUD pour "Library"
+    - [x] Controller CRUD pour "Movie"
+    - [x] Controller CRUD pour "Library"
     - [ ] Navigation entre Library et Movie
     - [ ] Controller CRUD pour "Collection"
     - [ ] Navigation entre Collection et Movie
@@ -61,6 +61,7 @@ Un objet représentant un film que l'utilisateur a éventuellement vu
 
 ### Propriétés
 - `title` **`[string:255]`** : titre officiel du film
+- `year` **`[smallint]`** : année de sortie du film
 - `imdbId` **`[integer]`** : identifiant du film sur la base de donnée IMDB
 - `watched` **`[boolean]`** : l'utilisateur a-t-il regardé le film
 - `rating` **`[smallint]`** : note de l'utilisateur sur le film
