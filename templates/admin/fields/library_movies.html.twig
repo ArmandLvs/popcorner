@@ -1,0 +1,16 @@
+<ul>
+	{% for movie in field.value %}
+		{%- set url = ea_url()
+            .setController('App\\Controller\\Admin\\MovieCrudController')
+            .setAction('detail')
+            .setEntityId(movie.id)
+        -%}
+		<li>
+			<a href="{{ url }}" target="_blank">{{ movie }}</a>
+		</li>
+{% else %}
+	</ul>
+	<span class="badge badge-secondary">None</span>
+	<ul>
+	{% endfor %}
+</ul>
