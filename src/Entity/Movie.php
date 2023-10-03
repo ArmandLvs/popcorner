@@ -33,6 +33,9 @@ class Movie
     #[ORM\JoinColumn(nullable: false)]
     private ?Library $library = null;
 
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $year = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +109,23 @@ class Movie
     public function setLibrary(?Library $library): static
     {
         $this->library = $library;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title . ' (' . $this->year . ')';
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): static
+    {
+        $this->year = $year;
 
         return $this;
     }
