@@ -22,17 +22,17 @@
     - [x] Ajout de EasyAdmin
     - [x] Controller CRUD pour "Movie"
     - [x] Controller CRUD pour "Library"
-    - [ ] Navigation entre Library et Movie
+    - [x] Navigation entre Library et Movie
     - [ ] Controller CRUD pour "Collection"
     - [ ] Navigation entre Collection et Movie
 - [ ] Création des pages du front end
-    - [ ] Consultation de toutes les Libraries
-    - [ ] Consultation d'une library
-    - [ ] Consultation d'un film
-- [ ] Utilisation de gabarits pour les pages de consultation du front-office
-	- [ ] Consultation d'un "Movie"
- 	- [ ] consultation de la liste des "Movie" d'un "Library"
- 	- [ ] Navigation d'une "Library" vers la consultation de ses "Movie"
+    - [x] Consultation de toutes les bibliothèques
+    - [x] Consultation d'une bibliothèque
+    - [x] Consultation d'un film
+- [x] Utilisation de gabarits pour les pages de consultation du front-office
+	- [x] Consultation d'un "Movie"
+ 	- [x] consultation de la liste des "Movie" d'un "Library"
+ 	- [x] Navigation d'une "Library" vers la consultation de ses "Movie"
 - [ ] Intégration d'une mise en forme CSS avec Bootstrap dans les gabarits Twig
 - [ ] Intégration de menus de navigation
 
