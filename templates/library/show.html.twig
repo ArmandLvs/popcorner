@@ -49,7 +49,7 @@
 					<ul>
 						{%  for movie in library.movies %}
 							<li>
-								{{ movie }}
+								<a href="{{ path('movie_show', { 'id': movie.id }) }}">{{ movie }}</a>
 							</li>
 						{% endfor %}
 					</ul>
