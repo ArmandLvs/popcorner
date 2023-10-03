@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film
+{% endblock %}
+
+{%  block stylesheets %}
+	{{ parent() }}
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td,
+		th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+{% endblock %}
+
+
+{% block body %}
+
+	<h1>Film</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ movie.id }}</td>
+			</tr>
+			<tr>
+				<th>Titre</th>
+				<td>{{ movie.title }}</td>
+			</tr>
+			<tr>
+				<th>Année</th>
+				<td>{{ movie.year }}</td>
+			</tr>
+			<tr>
+				<th>IMDB Id</th>
+				<td>{{ movie.imdbId }}</td>
+			</tr>
+			<tr>
+				<th>Membre</th>
+				<td>
+					<a href="{{ path('library_show', {'id': library.id}) }}">{{ member }}</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Status</th>
+				{% if movie.watched %}
+					<td>Vu</td>
+				{% else %}
+					<td>Non vu</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<th>Note</th>
+				{% if movie.rating %}
+					<td>{{ movie.rating }}</td>
+				{% else %}
+					<td>Non noté</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<th>Commentaire</th>
+				{% if movie.review %}
+					<td>{{ movie.review }}</td>
+				{% else %}
+					<td>Non commenté</td>
+				{% endif %}
+			</tr>
+		</tbody>
+	</table>
+
+
+{% endblock %}
