@@ -1,0 +1,7 @@
+bootstrap_menu:
+  menus:
+    main:
+      items:
+        libraries:
+          label: 'Bibliothèques'
+          route: 'library'

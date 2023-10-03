@@ -81,7 +81,7 @@ Transformer cette liste en todo list en remplaçant les trois variables précéd
     - [x] CRUD Movie
     - [ ] CRUD Collection
     - [x] CRUD Member
-    - [ ] Navigation entre une bibliothèque et un film
+    - [x] Navigation entre une bibliothèque et un film
     - [ ] Navigation entre une bibliothèque et une collection
     - [ ] Navigation entre une collection et un film
 - [ ] Front-office
@@ -90,8 +90,8 @@ Transformer cette liste en todo list en remplaçant les trois variables précéd
     - [x] Consultation d'un film
     - [x] Navigation entre une bibliothèque et un film et inversement
     - [x] Passage sur Twig
-    - [ ] Intégration de Bootstrap
-    - [ ] Intégration de menus de navigation
+    - [x] Intégration de Bootstrap
+    - [x] Intégration de menus de navigation
     - [ ] Consultation d'une collection
     - [ ] Navigation entre une collection et un film
     - [ ] Affichage des consultations publiques avec navigation vers les films
