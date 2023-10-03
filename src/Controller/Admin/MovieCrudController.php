@@ -10,6 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class MovieCrudController extends AbstractCrudController
 {
@@ -26,10 +29,17 @@ class MovieCrudController extends AbstractCrudController
             TextField::new('title'),
             IntegerField::new('year'),
             TextField::new('imdbId'),
-            BooleanField::new('watched'),
-            IntegerField::new('rating'),
-            TextareaField::new('review'),
-            AssociationField::new('library'),
+            BooleanField::new('watched')->onlyOnDetail(),
+            IntegerField::new('rating')->onlyOnDetail(),
+            TextareaField::new('review')->onlyOnDetail(),
+            AssociationField::new('library')->onlyOnDetail(),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+
+        return $actions
+            ->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
 }
