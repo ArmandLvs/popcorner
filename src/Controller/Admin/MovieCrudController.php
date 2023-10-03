@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class MovieCrudController extends AbstractCrudController
 {
@@ -21,7 +22,9 @@ class MovieCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->hideOnForm(),
             TextField::new('title'),
+            IntegerField::new('year'),
             TextField::new('imdbId'),
             BooleanField::new('watched'),
             IntegerField::new('rating'),
