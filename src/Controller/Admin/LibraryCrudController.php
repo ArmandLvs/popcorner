@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Library;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class LibraryCrudController extends AbstractCrudController
 {
@@ -12,14 +13,10 @@ class LibraryCrudController extends AbstractCrudController
         return Library::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new("description")
         ];
     }
-    */
 }

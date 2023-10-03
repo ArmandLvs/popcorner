@@ -17,8 +17,8 @@ class Movie
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column]
-    private ?int $imdbId = null;
+    #[ORM\Column(length: 255)]
+    private ?string $imdbId = null;
 
     #[ORM\Column]
     private ?bool $watched = null;
@@ -50,12 +50,12 @@ class Movie
         return $this;
     }
 
-    public function getImdbId(): ?int
+    public function getImdbId(): ?string
     {
         return $this->imdbId;
     }
 
-    public function setImdbId(int $imdbId): static
+    public function setImdbId(string $imdbId): static
     {
         $this->imdbId = $imdbId;
 
