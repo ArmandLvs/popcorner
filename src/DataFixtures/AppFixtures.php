@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $member = new Member();
-        $member->setNickname('John Doe');
+        $member->setNickname('john_doe');
         $member->setDescription('A member of the library');
 
         $library = new Library();
@@ -23,6 +23,7 @@ class AppFixtures extends Fixture
 
         $movie1 = new Movie();
         $movie1->setTitle('The Matrix');
+        $movie1->setyear(1999);
         $movie1->setImdbId('tt0133093');
         $movie1->setWatched(true);
         $movie1->setRating(5);
@@ -31,12 +32,14 @@ class AppFixtures extends Fixture
 
         $movie2 = new Movie();
         $movie2->setTitle('The Matrix Reloaded');
+        $movie2->setYear(2003);
         $movie2->setImdbId('tt0234215');
         $movie2->setWatched(false);
         $library->addMovie($movie2);
 
         $movie3 = new Movie();
         $movie3->setTitle('The Matrix Revolutions');
+        $movie3->setYear(2003);
         $movie3->setImdbId('tt0242653');
         $movie3->setWatched(false);
         $library->addMovie($movie3);
