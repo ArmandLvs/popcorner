@@ -18,9 +18,9 @@ class LibraryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id'),
             TextField::new("description"),
-            AssociationField::new("movies")->onlyOnDetail(),
+            AssociationField::new("movies"),
         ];
     }
 }

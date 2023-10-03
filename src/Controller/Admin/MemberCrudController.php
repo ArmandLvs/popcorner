@@ -18,10 +18,10 @@ class MemberCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id'),
             TextField::new('nickname'),
             TextField::new('description'),
-            AssociationField::new('library')->onlyOnDetail(),
+            AssociationField::new('library'),
         ];
     }
 }
