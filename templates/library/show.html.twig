@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliothèque
+{% endblock %}
+
+{%  block stylesheets %}
+	{{ parent() }}
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td,
+		th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+
+	<h1>Bibliothèque</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ library.id }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ library.description }}</td>
+			</tr>
+			<tr>
+				<th>Membre</th>
+				<td>{{ library.member }}</td>
+			</tr>
+			<tr>
+				<th>Films</th>
+				<td>
+					<ul>
+						{%  for movie in library.movies %}
+							<li>
+								{{ movie }}
+							</li>
+						{% endfor %}
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+{% endblock %}

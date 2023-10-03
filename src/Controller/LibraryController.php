@@ -2,17 +2,39 @@
 
 namespace App\Controller;
 
+use App\Entity\Library;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 class LibraryController extends AbstractController
 {
-    #[Route('/library', name: 'app_library')]
-    public function index(): Response
+    #[Route('/library', name: 'library')]
+    public function index(ManagerRegistry $doctrine): Response
     {
+        $em = $doctrine->getManager();
+        $libraries = $em->getRepository(Library::class)->findAll();
+
         return $this->render('library/index.html.twig', [
-            'controller_name' => 'LibraryController',
+            'libraries' => $libraries
+        ]);
+    }
+
+    #[Route('/library/{id}', name: 'library_show', requirements: ['id' => '\d+'])]
+    public function show(ManagerRegistry $doctrine, $id): Response
+    {
+        $em = $doctrine->getManager();
+        $library = $em->getRepository(Library::class)->find($id);
+
+        if (!$library) {
+            throw $this->createNotFoundException(
+                'No library found for id ' . $id
+            );
+        }
+
+        return $this->render('library/show.html.twig', [
+            'library' => $library
         ]);
     }
 }
