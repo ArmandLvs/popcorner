@@ -51,6 +51,8 @@
 			<tr>
 				<th>Membre</th>
 				<td>
+					<!-- Link to member's library for now -->
+					<!-- TODO: Link to member's profile -->
 					<a href="{{ path('library_show', {'id': library.id}) }}">{{ member }}</a>
 				</td>
 			</tr>
@@ -81,6 +83,7 @@
 		</tbody>
 	</table>
 
+<!-- Link to original library -->
 <a href="{{ path('library_show', {'id': library.id}) }}">
 	Retour à la Bibliothèque
 	{{ library }}

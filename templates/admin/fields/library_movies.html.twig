@@ -1,5 +1,6 @@
 <ul>
 	{% for movie in field.value %}
+		<!-- Fetch the URL to the detail page of the movie -->
 		{%- set url = ea_url()
             .setController('App\\Controller\\Admin\\MovieCrudController')
             .setAction('detail')
@@ -12,7 +13,7 @@
 		</li>
 {% else %}
 	</ul>
-	<span class="badge badge-secondary">None</span>
+	<span class="badge badge-secondary">Aucun film</span>
 	<ul>
 	{% endfor %}
 </ul>

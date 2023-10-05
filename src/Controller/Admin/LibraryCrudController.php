@@ -21,11 +21,11 @@ class LibraryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new("description"),
-            AssociationField::new("movies")
-                ->onlyOnDetail()
-                ->setTemplatePath('admin/fields/library_movies.html.twig'),
+            IdField::new('id')->hideOnForm(), // Hide the id field on the form
+            TextField::new("description"), // Add a text field to the form
+            AssociationField::new("movies") // Add an association field to the form
+                ->onlyOnDetail() // Only show it on the detail page
+                ->setTemplatePath('admin/fields/library_movies.html.twig'), // And use a custom template in the detail page to display the movies
         ];
     }
 
@@ -33,7 +33,7 @@ class LibraryCrudController extends AbstractCrudController
     {
 
         return $actions
-            ->add(Crud::PAGE_INDEX, Action::DETAIL);
+            ->add(Crud::PAGE_INDEX, Action::DETAIL); // Add a detail button on the index page
     }
 
 }

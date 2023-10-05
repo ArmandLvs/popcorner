@@ -13,8 +13,8 @@ class LibraryController extends AbstractController
     #[Route('/library', name: 'library')]
     public function index(ManagerRegistry $doctrine): Response
     {
-        $em = $doctrine->getManager();
-        $libraries = $em->getRepository(Library::class)->findAll();
+        $database = $doctrine->getManager(); // Get the Doctrine entity manager
+        $libraries = $database->getRepository(Library::class)->findAll(); // Find all the libraries
 
         return $this->render('library/index.html.twig', [
             'libraries' => $libraries
@@ -24,15 +24,17 @@ class LibraryController extends AbstractController
     #[Route('/library/{id}', name: 'library_show', requirements: ['id' => '\d+'])]
     public function show(ManagerRegistry $doctrine, $id): Response
     {
-        $em = $doctrine->getManager();
-        $library = $em->getRepository(Library::class)->find($id);
+        $database = $doctrine->getManager(); // Get the Doctrine entity manager
+        $library = $database->getRepository(Library::class)->find($id); // Find the library with id $id
 
+        // If no library is found, throw a 404 HTTP error
         if (!$library) {
             throw $this->createNotFoundException(
                 'No library found for id ' . $id
             );
         }
 
+        // Render the template
         return $this->render('library/show.html.twig', [
             'library' => $library
         ]);
