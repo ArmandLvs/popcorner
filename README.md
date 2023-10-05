@@ -1,59 +1,5 @@
 # Popcorner
 
-# TODO
-
-- [ ] Entités
-    - [x] Création de Library
-    - [x] Création de Movie
-    - [ ] Création de Collection
-    - [x] Création de Member
-    - [x] Association entre Library et Movie
-    - [x] Association entre Library et Member
-    - [ ] Association entre Movie et Collection
-    - [ ] Association entre Collection et Member
-    - [ ] Ajout des propriétés non-essentielles des objets
-- [ ] Fixtures
-    - [x] Fixtures pour Library
-    - [x] Fixtures pour Movie
-    - [ ] Fixtures pour Collection
-    - [x] Fixtures pour Member
-- [ ] Interface Admin avec EasyAdmin
-    - [x] CRUD Library
-    - [x] CRUD Movie
-    - [ ] CRUD Collection
-    - [x] CRUD Member
-    - [x] Navigation entre une bibliothèque et un film
-    - [ ] Navigation entre une bibliothèque et une collection
-    - [ ] Navigation entre une collection et un film
-- [ ] Front-office
-    - [x] Consultation de toutes les bibliothèques
-    - [x] Consultation d'une bibliothèque
-    - [x] Consultation d'un film
-    - [x] Navigation entre une bibliothèque et un film et inversement
-    - [x] Passage sur Twig
-    - [x] Intégration de Bootstrap
-    - [x] Intégration de menus de navigation
-    - [ ] Consultation d'une collection
-    - [ ] Navigation entre une collection et un film
-    - [ ] Affichage des consultations publiques avec navigation vers les films
-    - [ ] Ajout d'un film à une collection
-    - [ ] Ajout d'une collection à un membre
-    - [ ] Ajout d'un film à une bibliothèque
-    - [ ] Création de la bibliothèque à un membre
-    - [ ] Gestion de la suppression
-    - [ ] Gestion de la mise en ligne d'images pour les films
-    - [ ] Gestion de marque-pages/panier
-- [ ] Utilisateurs
-    - [ ] Création de l'entité User
-    - [ ] Association entre User et Member
-    - [ ] Authentification
-    - [ ] Protection des routes interdites aux membres
-    - [ ] Protection des données aux seuls propriétaires
-    - [ ] Contextualisation du chargement des données en fonction de l'utilisateur connecté
-- [ ] Utilisation des messages flash pour les CRUDs
-
-
-
 # Entités
 
 ## Entité Member
@@ -85,13 +31,17 @@ Un objet représentant un film que l'utilisateur a éventuellement vu
 - `library` **`[relation:ManyToOne]`** : bibliothèque dans laquelle se trouve le film
 
 
-## Entité Collection
+## Entité Playlist
 L'utilisateur peut créer des collections de ses films selon ses envies. Une collection peut être les films préférées d'un utilisateur, ou une liste de recommandations pour un genre en particulier.
 
 ### Propriétés
-- `name` **`[string:255]`** : nom de la collection
-- `description` **`[text]`** : description de la collection
-- `private` **`[boolean]`** : visibilité de la collection
+- `name` **`[string:255]`** : nom de la playlist
+- `description` **`[text]`** : description de la playlist
+- `private` **`[boolean]`** : visibilité de la playlist
+- `public` **`[boolean]`** : visibilité de la playlist
+- `movies` **`[relation:ManyToMany]`** : films contenus dans la playlist
+- `member` **`[relation:ManyToOne]`** : utilisateur propriétaire de la playlist
+
 
 
 # Commandes utiles
@@ -99,6 +49,7 @@ L'utilisateur peut créer des collections de ses films selon ses envies. Une col
 ## Symfony
 
 - Démarrage du serveur : `symfony server:start`
+- Table de routage : `symfony console debug:router --show-controllers`
 
 ## Doctrine
 
@@ -114,6 +65,7 @@ L'utilisateur peut créer des collections de ses films selon ses envies. Une col
 - Création de la migration : `symfony console make:migration`
 - Exécution de la migration : `symfony console doctrine:migrations:migrate`
 
-## Controller
+## Controller / CRUD
 
-- Création d'un controller : `symfony console make:controller`
+- Création d'un controller : `symfony console make:controller [nom]Controller`
+- Création d'un CRUD : `symfony console make:crud [nom]`
