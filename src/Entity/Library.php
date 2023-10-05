@@ -65,11 +65,6 @@ class Library
         return $this;
     }
 
-    public function __toString(): string
-    {
-        return $this->getId() . '';
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -97,5 +92,10 @@ class Library
         $this->member = $member;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getId() . '';
     }
 }

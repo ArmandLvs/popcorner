@@ -113,11 +113,6 @@ class Movie
         return $this;
     }
 
-    public function __toString(): string
-    {
-        return $this->title . ' (' . $this->year . ')';
-    }
-
     public function getYear(): ?int
     {
         return $this->year;
@@ -128,5 +123,10 @@ class Movie
         $this->year = $year;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title . ' (' . $this->year . ')';
     }
 }
