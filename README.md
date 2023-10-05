@@ -1,5 +1,7 @@
 # Popcorner
 
+Un site de gestion de bibliothèque de films pour les cinéphiles avec la possibilité de créer des playlists de films et de les partager avec d'autres utilisateurs.
+
 # Entités
 
 ## Entité Member
