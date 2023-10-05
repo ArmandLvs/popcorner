@@ -71,3 +71,4 @@ L'utilisateur peut créer des collections de ses films selon ses envies. Une col
 
 - Création d'un controller : `symfony console make:controller [nom]Controller`
 - Création d'un CRUD : `symfony console make:crud [nom]`
+- Création d'un CRUD Admin : `symfony console make:admin:crud`
