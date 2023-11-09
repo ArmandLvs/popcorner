@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class LibraryController extends AbstractController
 {
+    #[Route('/', name: 'home')]
     #[Route('/library', name: 'library')]
     public function index(ManagerRegistry $doctrine): Response
     {
