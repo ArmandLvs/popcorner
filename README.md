@@ -39,10 +39,9 @@ L'utilisateur peut créer des collections de ses films selon ses envies. Une col
 ### Propriétés
 - `name` **`[string:255]`** : nom de la playlist
 - `description` **`[text]`** : description de la playlist
-- `private` **`[boolean]`** : visibilité de la playlist
-- `public` **`[boolean]`** : visibilité de la playlist
+- `published` **`[boolean]`** : visibilité de la playlist
 - `movies` **`[relation:ManyToMany]`** : films contenus dans la playlist
-- `member` **`[relation:ManyToOne]`** : utilisateur propriétaire de la playlist
+- `member` **`[relation:OneToMany]`** : utilisateur propriétaire de la playlist
 
 
 

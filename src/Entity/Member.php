@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MemberRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,6 +25,14 @@ class Member
     #[ORM\OneToOne(inversedBy: 'member', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Library $library = null;
+
+    #[ORM\OneToMany(mappedBy: 'member', targetEntity: Playlist::class, orphanRemoval: true)]
+    private Collection $playlists;
+
+    public function __construct()
+    {
+        $this->playlists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,5 +78,35 @@ class Member
     public function __toString(): string
     {
         return $this->getNickname();
+    }
+
+    /**
+     * @return Collection<int, Playlist>
+     */
+    public function getPlaylists(): Collection
+    {
+        return $this->playlists;
+    }
+
+    public function addPlaylist(Playlist $playlist): static
+    {
+        if (!$this->playlists->contains($playlist)) {
+            $this->playlists->add($playlist);
+            $playlist->setMember($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaylist(Playlist $playlist): static
+    {
+        if ($this->playlists->removeElement($playlist)) {
+            // set the owning side to null (unless already changed)
+            if ($playlist->getMember() === $this) {
+                $playlist->setMember(null);
+            }
+        }
+
+        return $this;
     }
 }

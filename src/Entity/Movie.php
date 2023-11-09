@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,6 +37,14 @@ class Movie
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $year = null;
+
+    #[ORM\ManyToMany(targetEntity: Playlist::class, mappedBy: 'movies')]
+    private Collection $playlists;
+
+    public function __construct()
+    {
+        $this->playlists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -128,5 +138,32 @@ class Movie
     public function __toString(): string
     {
         return $this->title . ' (' . $this->year . ')';
+    }
+
+    /**
+     * @return Collection<int, Playlist>
+     */
+    public function getPlaylists(): Collection
+    {
+        return $this->playlists;
+    }
+
+    public function addPlaylist(Playlist $playlist): static
+    {
+        if (!$this->playlists->contains($playlist)) {
+            $this->playlists->add($playlist);
+            $playlist->addMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaylist(Playlist $playlist): static
+    {
+        if ($this->playlists->removeElement($playlist)) {
+            $playlist->removeMovie($this);
+        }
+
+        return $this;
     }
 }
