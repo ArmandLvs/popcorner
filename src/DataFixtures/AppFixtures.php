@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Library;
 use App\Entity\Movie;
 use App\Entity\Member;
+use App\Entity\Playlist;
 
 class AppFixtures extends Fixture
 {
@@ -47,12 +48,31 @@ class AppFixtures extends Fixture
         $movie3->setWatched(false);
         $library->addMovie($movie3); // This also set the library of the movie
 
+        $movie4 = new Movie();
+        $movie4->setTitle('The Lord of the Rings: The Fellowship of the Ring');
+        $movie4->setYear(2001);
+        $movie4->setImdbId('tt0120737');
+        $movie4->setWatched(true);
+        $movie4->setRating(5);
+        $movie4->setReview('Wow. Just wow. How can you not love this movie? It\'s a masterpiece.');
+        $library->addMovie($movie4); // This also set the library of the movie
+
+        $playlist = new Playlist();
+        $playlist->setName('My favorite movies');
+        $playlist->setDescription('A playlist of my favorite movies');
+        $playlist->setMember($member);
+        $playlist->addMovie($movie1);
+        $playlist->addMovie($movie4);
+        $playlist->setPublished(true);
+
         // Persist the entities
         $manager->persist($member);
         $manager->persist($library);
         $manager->persist($movie1);
         $manager->persist($movie2);
         $manager->persist($movie3);
+        $manager->persist($movie4);
+        $manager->persist($playlist);
 
         // Save to database
         $manager->flush();
