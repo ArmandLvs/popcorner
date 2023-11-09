@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Library;
 use App\Entity\Movie;
 use App\Entity\Member;
+use App\Entity\Playlist;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,5 +35,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Members', 'fas fa-list', Member::class);
         yield MenuItem::linkToCrud('Libraries', 'fas fa-list', Library::class);
         yield MenuItem::linkToCrud('Movies', 'fas fa-list', Movie::class);
+        yield MenuItem::linkToCrud('Playlists', 'fas fa-list', Playlist::class);
     }
 }
