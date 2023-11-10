@@ -22,6 +22,12 @@
             "label": "Load fixtures",
             "type": "shell",
             "command": "symfony console doctrine:fixtures:load",
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate migrations",
+            "type": "shell",
+            "command": "symfony console doctrine:migrations:generate"
         }
     ]
 }
