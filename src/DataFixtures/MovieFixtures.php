@@ -1,0 +1,132 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\Movie;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+
+class MovieFixtures extends Fixture implements DependentFixtureInterface
+{
+    // list of movies to create
+    public const MOVIES = [
+        [
+            'title' => 'The Matrix',
+            'year' => 1999,
+            'imdbId' => 'tt0133093',
+            'watched' => true,
+            'rating' => 5,
+            'review' => 'A great movie. I love it! I\'ve seen it 10 times. I\'ll see it again. And again. And again. And again. And again. And again. And again. And again. And again. And again.'
+        ],
+        [
+            'title' => 'The Matrix Reloaded',
+            'year' => 2003,
+            'imdbId' => 'tt0234215',
+            'watched' => false
+        ],
+        [
+            'title' => 'The Matrix Revolutions',
+            'year' => 2003,
+            'imdbId' => 'tt0242653',
+            'watched' => false
+        ],
+        [
+            'title' => 'The Lord of the Rings: The Fellowship of the Ring',
+            'year' => 2001,
+            'imdbId' => 'tt0120737',
+            'watched' => true,
+            'rating' => 5,
+            'review' => 'Wow. Just wow. How can you not love this movie? It\'s a masterpiece.'
+        ],
+        [
+            'title' => 'The Lord of the Rings: The Two Towers',
+            'year' => 2002,
+            'imdbId' => 'tt0167261',
+            'watched' => true,
+            'rating' => 5,
+            'review' => 'Still a masterpiece.'
+        ],
+        [
+            'title' => 'The Lord of the Rings: The Return of the King',
+            'year' => 2003,
+            'imdbId' => 'tt0167260',
+            'watched' => true,
+            'rating' => 5,
+            'review' => 'Perfect ending to a perfect trilogy.'
+        ],
+        [
+            'title' => 'The Hobbit: An Unexpected Journey',
+            'year' => 2012,
+            'imdbId' => 'tt0903624',
+            'watched' => false
+        ],
+        [
+            'title' => 'The Hobbit: The Desolation of Smaug',
+            'year' => 2013,
+            'imdbId' => 'tt1170358',
+            'watched' => false
+        ],
+        [
+            'title' => 'The Hobbit: The Battle of the Five Armies',
+            'year' => 2014,
+            'imdbId' => 'tt2310332',
+            'watched' => false
+        ],
+        [
+            'title' => 'The Shawshank Redemption',
+            'year' => 1994,
+            'imdbId' => 'tt0111161',
+            'watched' => true,
+            'rating' => 2,
+            'review' => 'Okay I know a lot of people love this movie but I don\'t get it. It\'s just a prison movie. I\'ve seen it once and I don\'t want to see it again.',
+        ],
+        [
+            'title' => 'The Godfather',
+            'year' => 1972,
+            'imdbId' => 'tt0068646',
+            'watched' => true,
+            'rating' => 5,
+            'review' => 'Yeah, it\'s a classic. I\'ve seen it 3 times. I\'ll see it again.'
+        ],
+        [
+            'title' => 'The Godfather: Part II',
+            'year' => 1974,
+            'imdbId' => 'tt0071562',
+            'watched' => true,
+            'rating' => 5,
+            'review' => 'What a great sequel.'
+        ]
+    ];
+
+    public function load(ObjectManager $manager): void
+    {
+        foreach (self::MOVIES as $movieData) {
+            $movie = new Movie();
+            $movie->setTitle($movieData['title']);
+            $movie->setYear($movieData['year']);
+            $movie->setImdbId($movieData['imdbId']);
+            $movie->setWatched($movieData['watched']);
+            $movie->setLibrary($this->getReference('john_doe_library'));
+
+            if (isset($movieData['rating'])) {
+                $movie->setRating($movieData['rating']);
+            }
+
+            if (isset($movieData['review'])) {
+                $movie->setReview($movieData['review']);
+            }
+
+            $this->addReference($movieData['title'], $movie);
+            $manager->persist($movie);
+        }
+        $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            MemberFixtures::class,
+        ];
+    }
+}
