@@ -9,10 +9,6 @@
 	<table class="table">
 		<tbody>
 			<tr>
-				<th>Id</th>
-				<td>{{ playlist.id }}</td>
-			</tr>
-			<tr>
 				<th>Name</th>
 				<td>{{ playlist.name }}</td>
 			</tr>
@@ -21,20 +17,22 @@
 				<td>{{ playlist.description }}</td>
 			</tr>
 			<tr>
-				<th>Published</th>
-				<td>{{ playlist.published ? 'Yes' : 'No' }}</td>
+				<th>Films</th>
+				<td>
+					<ul>
+						{%  for movie in playlist.movies %}
+							<li>
+								<a href="{{ path('movie_show', { 'id': movie.id }) }}">{{ movie }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<div class="d-flex mt-3">
-		<a class="btn btn-success" href="{{ path('app_playlist_index') }}">back to list</a>
-		<a class="btn btn-secondary" href="{{ path('app_playlist_edit', {'id': playlist.id}) }}">edit</a>
-
-		<form method="post" action="{{ path('app_playlist_delete', {'id': playlist.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-			<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ playlist.id) }}">
-			<button class="btn btn-danger">Delete</button>
-		</form>
+		<a class="btn btn-success" href="{{ path('playlist_index') }}">Back to list</a>
 	</div>
 
 {% endblock %}

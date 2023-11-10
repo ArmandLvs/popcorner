@@ -1,24 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Playlist index
-{% endblock %}
-
+{% block title %}Playlist index{% endblock %}
 
 {% block body %}
 	<h1>Playlists publiées</h1>
 
-	<a class="btn btn-success" href="{{ path('app_playlist_new') }}">Create new</a>
-
-	<div class="row">
+	<div class="row mx-auto">
 		{% for playlist in playlists|filter(p => p.published) -%}
-			<div class="col-md-4">
-				<div class="card">
-					<div class="card-header">{{ playlist.name }}</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<div class="card text-center">
+					<div class="card-header">Crée par : <i>{{ playlist.member }}</i></div>
 					<div class="card-body">
+						<h5 class="card-title">{{ playlist.name }}</h5>
 						<p class="card-text">{{ playlist.description }}</p>
 					</div>
 					<div class="card-footer">
-						<a class="btn btn-sm btn-primary" href="{{ path('app_playlist_show', {'id': playlist.id}) }}">Show</a>
+						<a href="{{ path('playlist_show', {'id': playlist.id}) }}"><button class="btn btn-primary">Show</button></a>
 					</div>
 				</div>
 			</div>
