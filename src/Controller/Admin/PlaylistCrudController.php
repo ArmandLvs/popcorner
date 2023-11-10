@@ -29,7 +29,6 @@ class PlaylistCrudController extends AbstractCrudController
             TextField::new('name'),
             AssociationField::new('member'),
             BooleanField::new('published')
-                ->onlyOnForms()
                 ->hideWhenCreating(),
             TextareaField::new('description'),
 
