@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/playlist')]
 class PlaylistController extends AbstractController
 {
-    #[Route('/', name: 'app_playlist_index', methods: ['GET'])]
+    #[Route('/', name: 'playlist_index', methods: ['GET'])]
     public function index(PlaylistRepository $playlistRepository): Response
     {
         return $this->render('playlist/index.html.twig', [
@@ -22,7 +22,7 @@ class PlaylistController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_playlist_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'playlist_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $playlist = new Playlist();
@@ -33,7 +33,7 @@ class PlaylistController extends AbstractController
             $entityManager->persist($playlist);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_playlist_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('playlist/new.html.twig', [
@@ -42,15 +42,19 @@ class PlaylistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_playlist_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'playlist_show', methods: ['GET'])]
     public function show(Playlist $playlist): Response
     {
+        if (!$playlist->isPublished()) {
+            throw $this->createAccessDeniedException('The playlist is not published.');
+        }
+
         return $this->render('playlist/show.html.twig', [
             'playlist' => $playlist,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_playlist_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'playlist_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Playlist $playlist, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PlaylistType::class, $playlist);
@@ -59,7 +63,7 @@ class PlaylistController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_playlist_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('playlist/edit.html.twig', [
@@ -68,7 +72,7 @@ class PlaylistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_playlist_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'playlist_delete', methods: ['POST'])]
     public function delete(Request $request, Playlist $playlist, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $playlist->getId(), $request->request->get('_token'))) {
@@ -76,6 +80,6 @@ class PlaylistController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_playlist_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
     }
 }

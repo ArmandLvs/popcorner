@@ -5,3 +5,6 @@ bootstrap_menu:
         libraries:
           label: 'Bibliothèques'
           route: 'library'
+        playlists:
+          label: 'Playlists'
+          route: 'playlist_index'
