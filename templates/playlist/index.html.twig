@@ -1,39 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Playlist index{% endblock %}
+{% block title %}Playlist index
+{% endblock %}
+
 
 {% block body %}
-    <h1>Playlist index</h1>
+	<h1>Playlists publiées</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Published</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for playlist in playlists %}
-            <tr>
-                <td>{{ playlist.id }}</td>
-                <td>{{ playlist.name }}</td>
-                <td>{{ playlist.description }}</td>
-                <td>{{ playlist.published ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_playlist_show', {'id': playlist.id}) }}">show</a>
-                    <a href="{{ path('app_playlist_edit', {'id': playlist.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<a class="btn btn-success" href="{{ path('app_playlist_new') }}">Create new</a>
 
-    <a href="{{ path('app_playlist_new') }}">Create new</a>
+	<div class="row">
+		{% for playlist in playlists|filter(p => p.published) -%}
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header">{{ playlist.name }}</div>
+					<div class="card-body">
+						<p class="card-text">{{ playlist.description }}</p>
+					</div>
+					<div class="card-footer">
+						<a class="btn btn-sm btn-primary" href="{{ path('app_playlist_show', {'id': playlist.id}) }}">Show</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
