@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 
+#[Route('/library', name: 'library_')]
 class LibraryController extends AbstractController
 {
-    #[Route('/', name: 'home')]
-    #[Route('/library', name: 'library')]
+    #[Route('/', name: 'index', methods: ['GET'])]
     public function index(ManagerRegistry $doctrine): Response
     {
         $database = $doctrine->getManager(); // Get the Doctrine entity manager
@@ -22,7 +22,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/library/{id}', name: 'library_show', requirements: ['id' => '\d+'])]
+    #[Route('/{id}', name: 'show', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(ManagerRegistry $doctrine, $id): Response
     {
         $database = $doctrine->getManager(); // Get the Doctrine entity manager
@@ -40,4 +40,5 @@ class LibraryController extends AbstractController
             'library' => $library
         ]);
     }
+
 }
