@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Membre
+{% endblock %}
+
+{% block body %}
+	<h1>Membre</h1>
+
+	<table class="table table-hover align-middle">
+		<tbody>
+			<tr>
+				<th>Nom d'utilisateur</th>
+				<td>{{ member.nickname }}</td>
+			</tr>
+			<tr>
+				<th>Bio</th>
+				<td>{{ member.description }}</td>
+			</tr>
+			<tr>
+				<th>Bibliothèque</th>
+				<td>
+					<a href="{{ path('library_show', {'id': member.library.id}) }}" class="btn btn-sm btn-outline-primary">
+						Voir
+						<span class="badge text-bg-secondary">{{ member.library.movies|length }}</span>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Playlists</th>
+				<td>
+					{% for playlist in member.playlists|filter(p => p.published) -%}
+						<a class="btn btn-sm btn-outline-secondary" href="{{ path('playlist_show', {'id': playlist.id}) }}">
+							{{ playlist }}
+							<span class="badge text-bg-secondary">{{ playlist.movies|length }}</span>
+						</a>
+					{% endfor %}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary" href="{{ path('member_index') }}">Retour aux membres</a>
+
+{% endblock %}

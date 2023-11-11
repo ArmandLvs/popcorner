@@ -4,27 +4,21 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Membres</h1>
+<h1>Membres</h1>
 
-	<div class="row mx-auto">
-		{% for member in members -%}
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-				<div class="card text-center">
-					<div class="card-body">
-						<h5 class="card-title">{{ member.nickname }}</h5>
-						<p class="card-text">{{ member.description }}</p>
-					</div>
 
-					<ul class="list-group list-group-flush">
-						{% for playlist in member.playlists|filter(p => p.published) -%}
-							<li class="list-group-item">
-								<a href="{{ path('playlist_show', {'id': playlist.id}) }}">{{ playlist }}</a>
-							</li>
-						{% endfor %}
-					</ul>
-
+<div class="row mx-auto">
+	{% for member in members -%}
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<div class="card text-center">
+				<div class="card-body">
+					<h5 class="card-title">{{ member.nickname }}</h5>
+					<p class="card-text">{{ member.description }}</p>
+					<a href="{{ path('member_show', {'id': member.id}) }}" class="btn btn-primary">Voir le profil</a>
 				</div>
 			</div>
-		{% endfor %}
-	</div>
+		</div>
+	{% endfor %}
+</div>
+
 {% endblock %}
