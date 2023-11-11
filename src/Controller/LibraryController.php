@@ -3,39 +3,29 @@
 namespace App\Controller;
 
 use App\Entity\Library;
+use App\Repository\LibraryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 #[Route('/library', name: 'library_')]
 class LibraryController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET'])]
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(LibraryRepository $libraryRepository): Response
     {
-        $database = $doctrine->getManager(); // Get the Doctrine entity manager
-        $libraries = $database->getRepository(Library::class)->findAll(); // Find all the libraries
-
         return $this->render('library/index.html.twig', [
-            'libraries' => $libraries
+            'libraries' => $libraryRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show(ManagerRegistry $doctrine, $id): Response
+    public function show(
+        #[MapEntity(id: 'id')]
+        Library $library
+    ): Response
     {
-        $database = $doctrine->getManager(); // Get the Doctrine entity manager
-        $library = $database->getRepository(Library::class)->find($id); // Find the library with id $id
-
-        // If no library is found, throw a 404 HTTP error
-        if (!$library) {
-            throw $this->createNotFoundException(
-                'No library found for id ' . $id
-            );
-        }
-
-        // Render the template
         return $this->render('library/show.html.twig', [
             'library' => $library
         ]);
