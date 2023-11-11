@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Movie;
 use App\Entity\Playlist;
 use App\Form\PlaylistType;
 use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -81,5 +84,26 @@ class PlaylistController extends AbstractController
         }
 
         return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{playlist_id}/movie/{movie_id}', name: 'movie_show', requirements: ['playlist_id' => '\d+', 'movie_id' => '\d+'])]
+    public function movie_show(
+        #[MapEntity(id: 'playlist_id')]
+        Playlist $playlist,
+        #[MapEntity(id: 'movie_id')]
+        Movie $movie
+    ): Response {
+        if (!$playlist->isPublished()) {
+            throw $this->createAccessDeniedException("Playlist does not exist or is private.");
+        }
+
+        if (!$playlist->getMovies()->contains($movie)) {
+            throw $this->createNotFoundException("Movie not found in playlist.");
+        }
+
+        return $this->render('playlist/movie_show.html.twig', [
+            'playlist' => $playlist,
+            'movie' => $movie,
+        ]);
     }
 }

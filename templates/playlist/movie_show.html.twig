@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film
+{% endblock %}
+
+{% block body %}
+
+	<h1>Film</h1>
+
+	<table class="table ">
+		<tbody>
+			<tr>
+				<th>Titre</th>
+				<td>{{ movie.title }}</td>
+			</tr>
+			<tr>
+				<th>Année</th>
+				<td>{{ movie.year }}</td>
+			</tr>
+			<tr>
+				<th>IMDB Id</th>
+				<td>{{ movie.imdbId }}</td>
+			</tr>
+			<tr>
+				<th>Membre</th>
+				<td>
+					<!-- Link to member's library for now -->
+					<!-- TODO: Link to member's profile -->
+						<a href="{{ path('library_show', {'id': movie.library.id}) }}"> {{ movie.library.member }}</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Status</th>
+				{% if movie.watched %}
+					<td>Vu</td>
+				{% else %}
+					<td>Non vu</td>
+				{% endif %}
+			</tr>
+			{% if movie.rating %}
+				<tr>
+					<th>Note</th>
+					<td>{{ movie.rating }}</td>
+				</tr>
+			{% endif %}
+			{% if movie.review %}
+				<tr>
+					<th>Commentaire</th>
+					<td>{{ movie.review }}</td>
+				</tr>
+			{% endif %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary" href="{{ path('playlist_show', { 'id': playlist.id}) }}">Retour à la playlist</a>
+{% endblock %}

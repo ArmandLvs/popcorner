@@ -22,7 +22,9 @@
 					<ul>
 						{%  for movie in playlist.movies %}
 							<li>
-								<a href="{{ path('movie_show', { 'id': movie.id }) }}">{{ movie }}</a>
+<a href="{{ path('playlist_movie_show', { 'playlist_id': playlist.id, 'movie_id': movie.id }) }}">{{ movie }}</a>
+
+
 							</li>
 						{% endfor %}
 					</ul>
