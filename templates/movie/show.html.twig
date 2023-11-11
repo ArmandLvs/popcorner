@@ -3,39 +3,12 @@
 {% block title %}Film
 {% endblock %}
 
-{%  block stylesheets %}
-
-	<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td,
-		th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-		}
-
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
-{% endblock %}
-
-
 {% block body %}
 
 	<h1>Film</h1>
 
-	<table class="table">
+	<table class="table ">
 		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ movie.id }}</td>
-			</tr>
 			<tr>
 				<th>Titre</th>
 				<td>{{ movie.title }}</td>
@@ -64,29 +37,24 @@
 					<td>Non vu</td>
 				{% endif %}
 			</tr>
-			<tr>
-				<th>Note</th>
-				{% if movie.rating %}
+			{% if movie.rating %}
+				<tr>
+					<th>Note</th>
 					<td>{{ movie.rating }}</td>
-				{% else %}
-					<td>Non noté</td>
-				{% endif %}
-			</tr>
-			<tr>
-				<th>Commentaire</th>
-				{% if movie.review %}
+				</tr>
+			{% endif %}
+			{% if movie.review %}
+				<tr>
+					<th>Commentaire</th>
 					<td>{{ movie.review }}</td>
-				{% else %}
-					<td>Non commenté</td>
-				{% endif %}
-			</tr>
+				</tr>
+			{% endif %}
 		</tbody>
 	</table>
 
 <!-- Link to original library -->
-<a href="{{ path('library_show', {'id': library.id}) }}">
-	Retour à la Bibliothèque
-	{{ library }}
+<a class="btn btn-primary" href="{{ path('library_show', {'id': library.id}) }}">
+	Retour à la bibliothèque
 </a>
 
 
