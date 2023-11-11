@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Playlist index{% endblock %}
+{% block title %}Playlist publiques
+{% endblock %}
+
+
 
 {% block body %}
-	<h1>Playlists publiées</h1>
+<h1>Playlists publiques</h1>
+
+
 
 	<div class="row mx-auto">
 		{% for playlist in playlists|filter(p => p.published) -%}
@@ -12,6 +17,12 @@
 					<div class="card-header">Crée par : <i>{{ playlist.member }}</i></div>
 					<div class="card-body">
 						<h5 class="card-title">{{ playlist.name }}</h5>
+<h6 class="card-subtitle mb-2 text-body-secondary">
+	{{ playlist.movies|length }}
+	films
+</h6>
+
+
 						<p class="card-text">{{ playlist.description }}</p>
 					</div>
 					<div class="card-footer">
