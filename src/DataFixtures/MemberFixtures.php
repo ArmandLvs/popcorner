@@ -14,7 +14,7 @@ class MemberFixtures extends Fixture
     {
         $member = new Member();
         $member->setNickname('john_doe');
-        $member->setDescription('A member of the library');
+        $member->setDescription('A member of the site');
 
         $library = new Library();
         $library->setMember($member);
