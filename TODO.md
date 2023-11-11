@@ -3,26 +3,26 @@
 - [ ] Entités
     - [x] Création de Library
     - [x] Création de Movie
-    - [ ] Création de [galerie]
+    - [ ] Création de Playlist
     - [x] Création de Member
     - [x] Association entre Library et Movie
     - [x] Association entre Library et Member
-    - [ ] Association entre Movie et [galerie]
-    - [ ] Association entre [galerie] et Member
+    - [ ] Association entre Movie et Playlist
+    - [ ] Association entre Playlist et Member
     - [ ] Ajout des propriétés non-essentielles des objets
 - [ ] Fixtures
     - [x] Fixtures pour Library
     - [x] Fixtures pour Movie
-    - [ ] Fixtures pour [galerie]
+    - [ ] Fixtures pour Playlist
     - [x] Fixtures pour Member
 - [ ] Interface Admin avec EasyAdmin
     - [x] CRUD Library
     - [x] CRUD Movie
-    - [ ] CRUD [galerie]
+    - [ ] CRUD Playlist
     - [x] CRUD Member
     - [x] Navigation entre une bibliothèque et un film
-    - [ ] Navigation entre une bibliothèque et une [galerie]
-    - [ ] Navigation entre une [galerie] et un film
+    - [ ] Navigation entre une bibliothèque et une Playlist
+    - [ ] Navigation entre une Playlist et un film
 - [ ] Front-office
     - [x] Consultation de toutes les bibliothèques
     - [x] Consultation d'une bibliothèque
@@ -31,11 +31,11 @@
     - [x] Passage sur Twig
     - [x] Intégration de Bootstrap
     - [x] Intégration de menus de navigation
-    - [ ] Consultation d'une [galerie]
-    - [ ] Navigation entre une [galerie] et un film
+    - [ ] Consultation d'une Playlist
+    - [ ] Navigation entre une Playlist et un film
     - [ ] Affichage des consultations publiques avec navigation vers les films
-    - [ ] Ajout d'un film à une [galerie]
-    - [ ] Ajout d'une [galerie] à un membre
+    - [ ] Ajout d'un film à une Playlist
+    - [ ] Ajout d'une Playlist à un membre
     - [ ] Ajout d'un film à une bibliothèque
     - [ ] Création de la bibliothèque à un membre
     - [ ] Gestion de la suppression
