@@ -1,28 +1,28 @@
 # TODO
 
-- [ ] Entités
+- [x] Entités
     - [x] Création de Library
     - [x] Création de Movie
-    - [ ] Création de Playlist
+    - [x] Création de Playlist
     - [x] Création de Member
     - [x] Association entre Library et Movie
     - [x] Association entre Library et Member
-    - [ ] Association entre Movie et Playlist
-    - [ ] Association entre Playlist et Member
-    - [ ] Ajout des propriétés non-essentielles des objets
-- [ ] Fixtures
+    - [x] Association entre Movie et Playlist
+    - [x] Association entre Playlist et Member
+    - [x] Ajout des propriétés non-essentielles des objets
+- [x] Fixtures
     - [x] Fixtures pour Library
     - [x] Fixtures pour Movie
-    - [ ] Fixtures pour Playlist
+    - [x] Fixtures pour Playlist
     - [x] Fixtures pour Member
-- [ ] Interface Admin avec EasyAdmin
+- [x] Interface Admin avec EasyAdmin
     - [x] CRUD Library
     - [x] CRUD Movie
-    - [ ] CRUD Playlist
+    - [x] CRUD Playlist
     - [x] CRUD Member
     - [x] Navigation entre une bibliothèque et un film
-    - [ ] Navigation entre une bibliothèque et une Playlist
-    - [ ] Navigation entre une Playlist et un film
+    - [x] Navigation entre une bibliothèque et une Playlist
+    - [x] Navigation entre une Playlist et un film
 - [ ] Front-office
     - [x] Consultation de toutes les bibliothèques
     - [x] Consultation d'une bibliothèque
@@ -31,13 +31,13 @@
     - [x] Passage sur Twig
     - [x] Intégration de Bootstrap
     - [x] Intégration de menus de navigation
-    - [ ] Consultation d'une Playlist
-    - [ ] Navigation entre une Playlist et un film
-    - [ ] Affichage des consultations publiques avec navigation vers les films
+    - [x] Consultation d'une Playlist
+    - [x] Navigation entre une Playlist et un film
+    - [x] Affichage des consultations publiques avec navigation vers les films
     - [ ] Ajout d'un film à une Playlist
     - [ ] Ajout d'une Playlist à un membre
-    - [ ] Ajout d'un film à une bibliothèque
-    - [ ] Création de la bibliothèque à un membre
+    - [x] Ajout d'un film à une bibliothèque
+    - [ ] Création de la bibliothèque d'un membre
     - [ ] Gestion de la suppression
     - [ ] Gestion de la mise en ligne d'images pour les films
     - [ ] Gestion de marque-pages/panier
