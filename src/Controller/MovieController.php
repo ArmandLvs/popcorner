@@ -11,8 +11,10 @@ use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\MovieType;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/movie', name: 'movie_')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class MovieController extends AbstractController
 {
     #[Route('/{id}', name: 'show', requirements: ['id' => '\d+'])]

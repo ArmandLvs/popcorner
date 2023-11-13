@@ -43,4 +43,11 @@ class MemberFixtures extends Fixture
 
         $manager->flush();
     }
+
+    public function getDependencies(): array
+    {
+        return [
+            UserFixtures::class
+        ];
+    }
 }

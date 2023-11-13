@@ -15,6 +15,7 @@
     - [x] Fixtures pour Movie
     - [x] Fixtures pour Playlist
     - [x] Fixtures pour Member
+    - [x] Fixtures pour User
 - [x] Interface Admin avec EasyAdmin
     - [x] CRUD Library
     - [x] CRUD Movie
@@ -34,7 +35,7 @@
     - [x] Consultation d'une Playlist
     - [x] Navigation entre une Playlist et un film
     - [x] Affichage des consultations publiques avec navigation vers les films
-    - [ ] Ajout d'un film à une Playlist
+    - [x] Ajout d'un film à une Playlist
     - [ ] Ajout d'une Playlist à un membre
     - [x] Ajout d'un film à une bibliothèque
     - [ ] Création de la bibliothèque d'un membre
@@ -42,10 +43,10 @@
     - [ ] Gestion de la mise en ligne d'images pour les films
     - [ ] Gestion de marque-pages/panier
 - [ ] Utilisateurs
-    - [ ] Création de l'entité User
+    - [x] Création de l'entité User
     - [ ] Association entre User et Member
-    - [ ] Authentification
-    - [ ] Protection des routes interdites aux membres
+    - [x] Authentification
+    - [x] Protection des routes interdites aux membres
     - [ ] Protection des données aux seuls propriétaires
     - [ ] Contextualisation du chargement des données en fonction de l'utilisateur connecté
 - [ ] Utilisation des messages flash pour les CRUDs

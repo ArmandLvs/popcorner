@@ -8,8 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/library', name: 'library_')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class LibraryController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET'])]

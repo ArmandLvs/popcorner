@@ -11,3 +11,17 @@ bootstrap_menu:
         playlists:
           label: 'Playlists'
           route: 'playlist_index'
+    anonymousaccount:
+      items:
+        login:
+          label: 'Login'
+          route: 'login'
+        # register:
+        #   label: 'Register'
+        #   route: 'app_register'
+    account:
+      items:
+        logout:
+          label: 'Logout'
+          route: 'logout'
+          roles: [ 'ROLE_USER' ]
