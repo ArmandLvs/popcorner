@@ -45,6 +45,17 @@ class PlaylistFixtures extends Fixture implements DependentFixtureInterface
             ],
             'published' => false,
         ],
+        [
+            'name' => 'The Dark Knight Trilogy',
+            'member' => 'just_ken',
+            'description' => 'All movies in the Dark Knight universe',
+            'movies' => [
+                'Batman Begins',
+                'The Dark Knight',
+                'The Dark Knight Rises',
+            ],
+            'published' => true,
+        ]
     ];
 
     public function load(ObjectManager $manager): void
