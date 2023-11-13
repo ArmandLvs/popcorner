@@ -87,7 +87,7 @@ class PlaylistController extends AbstractController
     }
 
     #[Route('/{playlist_id}/movie/{movie_id}', name: 'movie_show', requirements: ['playlist_id' => '\d+', 'movie_id' => '\d+'])]
-    public function movie_show(
+    public function showMovie(
         #[MapEntity(id: 'playlist_id')]
         Playlist $playlist,
         #[MapEntity(id: 'movie_id')]
