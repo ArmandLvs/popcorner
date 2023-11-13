@@ -12,10 +12,14 @@
 				<th>Nom d'utilisateur</th>
 				<td>{{ member.nickname }}</td>
 			</tr>
-			<tr>
-				<th>Bio</th>
-				<td>{{ member.description }}</td>
-			</tr>
+
+			{% if member.description is not null -%}
+				<tr>
+					<th>Bio</th>
+					<td>{{ member.description }}</td>
+				</tr>
+			{% endif %}
+
 			<tr>
 				<th>Bibliothèque</th>
 				<td>
@@ -25,15 +29,20 @@
 					</a>
 				</td>
 			</tr>
+
 			<tr>
 				<th>Playlists</th>
 				<td>
-					{% for playlist in member.playlists|filter(p => p.published) -%}
-						<a class="btn btn-sm btn-outline-secondary" href="{{ path('playlist_show', {'id': playlist.id}) }}">
-							{{ playlist }}
-							<span class="badge text-bg-secondary">{{ playlist.movies|length }}</span>
-						</a>
-					{% endfor %}
+					{% if member.playlists|filter(p => p.published)|length == 0 -%}
+						<i>Aucune playlist publique</i>
+					{% else -%}
+						{% for playlist in member.playlists|filter(p => p.published) -%}
+							<a class="btn btn-sm btn-outline-secondary" href="{{ path('playlist_show', {'id': playlist.id}) }}">
+								{{ playlist }}
+								<span class="badge text-bg-secondary">{{ playlist.movies|length }}</span>
+							</a>
+						{% endfor %}
+					{% endif %}
 				</td>
 			</tr>
 		</tbody>

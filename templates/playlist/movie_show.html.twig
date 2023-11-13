@@ -37,13 +37,15 @@
 					<td>Non vu</td>
 				{% endif %}
 			</tr>
-			{% if movie.rating %}
+
+			{% if movie.rating is not null %}
 				<tr>
 					<th>Note</th>
 					<td>{{ movie.rating }}</td>
 				</tr>
 			{% endif %}
-			{% if movie.review %}
+
+			{% if movie.review is not null %}
 				<tr>
 					<th>Commentaire</th>
 					<td>{{ movie.review }}</td>

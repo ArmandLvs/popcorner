@@ -13,7 +13,11 @@
 			<div class="card text-center">
 				<div class="card-body">
 					<h5 class="card-title">{{ member.nickname }}</h5>
-					<p class="card-text">{{ member.description }}</p>
+
+					{% if member.description is not null -%}
+						<p class="card-text">{{ member.description }}</p>
+					{% endif -%}
+
 					<a href="{{ path('member_show', {'id': member.id}) }}" class="btn btn-primary">Voir le profil</a>
 				</div>
 			</div>
