@@ -31,7 +31,11 @@
 			</tr>
 
 			<tr>
-				<th>Playlists</th>
+				<th>
+					Playlists
+					<a class="btn btn-sm btn-outline-primary" href="{{ path('playlist_new', {'member_id': member.id}) }}">
+						Créer une playlist</i>
+				</th>
 				<td>
 					{% if member.playlists|filter(p => p.published)|length == 0 -%}
 						<i>Aucune playlist publique</i>

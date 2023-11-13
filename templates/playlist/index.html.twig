@@ -11,7 +11,7 @@
 
 
 	<div class="row mx-auto">
-		{% for playlist in playlists|filter(p => p.published) -%}
+		{% for playlist in playlists -%}
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 				<div class="card text-center">
 					<div class="card-header">Crée par : <i>{{ playlist.member }}</i></div>
@@ -26,7 +26,8 @@
 						<p class="card-text">{{ playlist.description }}</p>
 					</div>
 					<div class="card-footer">
-						<a href="{{ path('playlist_show', {'id': playlist.id}) }}"><button class="btn btn-primary">Show</button></a>
+						<a class="btn btn-primary" href="{{ path('playlist_show', {'id': playlist.id}) }}">Show</a>
+						<a class="btn btn-warning" href="{{ path('playlist_edit', {'id': playlist.id}) }}">Edit</a>
 					</div>
 				</div>
 			</div>

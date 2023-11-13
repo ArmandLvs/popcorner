@@ -35,6 +35,7 @@
 
 	<div class="d-flex mt-3">
 		<a class="btn btn-success" href="{{ path('playlist_index') }}">Back to list</a>
+		<a class="btn btn-warning ml-2" href="{{ path('playlist_edit', { 'id': playlist.id }) }}">Edit</a>
 	</div>
 
 {% endblock %}

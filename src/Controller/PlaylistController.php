@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Member;
 use App\Entity\Movie;
 use App\Entity\Playlist;
 use App\Form\PlaylistType;
@@ -20,14 +21,20 @@ class PlaylistController extends AbstractController
     public function index(PlaylistRepository $playlistRepository): Response
     {
         return $this->render('playlist/index.html.twig', [
-            'playlists' => $playlistRepository->findAll(),
+            'playlists' => $playlistRepository->findBy(['published' => true]),
         ]);
     }
 
-    #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/new/{member_id}', name: 'new', requirements: ['member_id' => '\d+'], methods: ['GET', 'POST'])]
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        #[MapEntity(id: 'member_id')]
+        Member $member,
+    ): Response
     {
         $playlist = new Playlist();
+        $playlist->setMember($member);
         $form = $this->createForm(PlaylistType::class, $playlist);
         $form->handleRequest($request);
 
@@ -35,10 +42,11 @@ class PlaylistController extends AbstractController
             $entityManager->persist($playlist);
             $entityManager->flush();
 
-            return $this->redirectToRoute('playlist_show', ['id' => $playlist->getId()]);
+            return $this->redirectToRoute('playlist_show', ['id' => $playlist->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('playlist/new.html.twig', [
+            'member' => $member,
             'playlist' => $playlist,
             'form' => $form,
         ]);
@@ -65,7 +73,7 @@ class PlaylistController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('playlist_show', ['id' => $playlist->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('playlist/edit.html.twig', [
