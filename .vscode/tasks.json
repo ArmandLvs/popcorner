@@ -21,7 +21,7 @@
         {
             "label": "Load fixtures",
             "type": "shell",
-            "command": "symfony console doctrine:fixtures:load",
+            "command": "symfony console doctrine:fixtures:load -q",
             "problemMatcher": []
         },
         {
