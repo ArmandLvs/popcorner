@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ library }} - New Movie{% endblock %}
+
+{% block body %}
+    <h1>Create new Movie</h1>
+
+    {{ include('library/_form.html.twig') }}
+
+    <a href="{{ path('library_show', {'id': library.id}) }}">Retour à la bibliothèque</a>
+{% endblock %}

@@ -17,7 +17,10 @@
 				<td>{{ library.member }}</td>
 			</tr>
 			<tr>
-				<th>Films</th>
+				<th>
+					Films
+					<a class="btn btn-primary" href="{{ path('library_movie_new', {'library_id': library.id}) }}">Ajouter un film</a>
+				</th>
 				<td>
 					<ul>
 						{%  for movie in library.movies %}
