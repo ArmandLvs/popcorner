@@ -2,6 +2,26 @@
 
 Un site de gestion de bibliothèque de films pour les cinéphiles avec la possibilité de créer des playlists de films et de les partager avec d'autres utilisateurs.
 
+Pour accéder à l'app:
+127.0.0.1:8000/login
+127.0.0.1:8000/library
+127.0.0.1:8000/playlist
+
+La route / ne marche pas. Il faut directement aller à la consultation de la bibliothèque ou des playlists.
+
+# Comptes de test
+
+## Admin
+Email: john.doe@example.com
+Password: password123
+Rôle: ROLE_ADMIN
+
+## User
+Email: just.ken@example.com
+Password: password123
+Rôle: ROLE_USER
+
+
 # Entités
 
 ## Entité Member

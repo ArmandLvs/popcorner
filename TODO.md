@@ -36,7 +36,7 @@
     - [x] Navigation entre une Playlist et un film
     - [x] Affichage des consultations publiques avec navigation vers les films
     - [x] Ajout d'un film à une Playlist
-    - [ ] Ajout d'une Playlist à un membre
+    - [x] Ajout d'une Playlist à un membre
     - [x] Ajout d'un film à une bibliothèque
     - [ ] Création de la bibliothèque d'un membre
     - [ ] Gestion de la suppression
@@ -44,7 +44,7 @@
     - [ ] Gestion de marque-pages/panier
 - [ ] Utilisateurs
     - [x] Création de l'entité User
-    - [ ] Association entre User et Member
+    - [x] Association entre User et Member
     - [x] Authentification
     - [x] Protection des routes interdites aux membres
     - [ ] Protection des données aux seuls propriétaires

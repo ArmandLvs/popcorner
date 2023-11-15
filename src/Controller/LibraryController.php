@@ -28,6 +28,13 @@ class LibraryController extends AbstractController
         Library $library
     ): Response
     {
+        $isAdmin = $this->isGranted('ROLE_ADMIN');
+        $isOwner = $this->getUser()->getUserIdentifier() === $library->getMember()->getUser()->getUserIdentifier();
+
+        if (!$isAdmin && !$isOwner) {
+            throw $this->createAccessDeniedException("You cannot access another member's library!");
+        }
+
         return $this->render('library/show.html.twig', [
             'library' => $library
         ]);
